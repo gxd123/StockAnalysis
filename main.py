@@ -1,4 +1,6 @@
-# comments
+import readURL
+import DataStore
+import DataYahoo
 
 strYahooURL = "http://table.finance.yahoo.com/table.csv?s="
 def makeRequestMsg(code):
@@ -10,7 +12,24 @@ def generateCodeList():
     return listCode
 
 if __name__ == "__main__":
+    print 'DataStore'
+    DataStore dataStore
+    
     print 'generateCodeList'
-	
+	listCode = generateCodeList()
+    for code in listCode:
+        URL = makeRequestMsg(code)
+        print 'request msg: ', URL
+        
+        print 'read URL'
+        html = getHtml(URL)
+        
+        DataYahoo dataYahoo(html)
+        dataStore.addYahooData(dataYahoo)
+        
+      
+        
+    
+    
 	
 
